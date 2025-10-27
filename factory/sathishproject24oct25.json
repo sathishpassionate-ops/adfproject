@@ -1,0 +1,9 @@
+{
+	"name": "sathishproject24oct25",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "5a13718f-fb42-4326-831d-209d0046d771",
+		"tenantId": "e08d0cb4-7fe0-44fd-8290-c38eaeeea3f9"
+	}
+}
