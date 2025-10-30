@@ -164,13 +164,7 @@
 				"outputs": [
 					{
 						"referenceName": "sql_to_file_dataset",
-						"type": "DatasetReference",
-						"parameters": {
-							"filename": {
-								"value": "@pipeline().parameters.color",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
