@@ -128,7 +128,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT * FROM ',pipeline().parameters.tablename,'where color=''',pipeline().parameters.color,'''')",
+							"value": "@concat('SELECT * FROM ',pipeline().parameters.tablename,' where color=''',pipeline().parameters.color,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
