@@ -97,7 +97,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText3",
+						"referenceName": "sqlsink",
 						"type": "DatasetReference"
 					}
 				],
