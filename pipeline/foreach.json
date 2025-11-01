@@ -16,13 +16,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "sourcedataset2",
+						"referenceName": "metadata_dataset",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
+						"childItems",
 						"itemName",
-						"itemType",
-						"size"
+						"itemType"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -62,83 +62,24 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
-									}
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "parameterdataset1",
-									"type": "DatasetReference",
-									"parameters": {
-										"ds_container": {
-											"value": "@pipeline().parameters.pp_container",
-											"type": "Expression"
-										},
-										"ds_folder": {
-											"value": "@pipeline().parameters.pp_input_directory",
-											"type": "Expression"
-										},
-										"ds_filename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "parameterdataset1",
-									"type": "DatasetReference",
-									"parameters": {
-										"ds_container": {
-											"value": "@pipeline().parameters.pp_container",
-											"type": "Expression"
-										},
-										"ds_folder": {
-											"value": "@pipeline().parameters.pp_output_directory",
-											"type": "Expression"
-										},
-										"ds_filename": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
-								}
-							]
+								"enableStaging": false
+							}
 						}
 					]
 				}
 			}
 		],
+		"parameters": {
+			"pp_container": {
+				"type": "String"
+			},
+			"pp_input_directory": {
+				"type": "String"
+			},
+			"pp_filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
