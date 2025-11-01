@@ -1,5 +1,5 @@
 {
-	"name": "foreach",
+	"name": "foreach_pipeline",
 	"properties": {
 		"activities": [
 			{
