@@ -63,7 +63,14 @@
 			{
 				"name": "Notebook1",
 				"type": "DatabricksNotebook",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Copy data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -81,6 +88,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
