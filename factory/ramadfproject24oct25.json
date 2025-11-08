@@ -1,0 +1,9 @@
+{
+	"name": "ramadfproject24oct25",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "25867399-1469-4cb5-8520-ddf400a5435a",
+		"tenantId": "e08d0cb4-7fe0-44fd-8290-c38eaeeea3f9"
+	}
+}
