@@ -95,13 +95,41 @@
 							"inputs": [
 								{
 									"referenceName": "parameterdataset11",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"ds_container": {
+											"value": "@item().Source_container",
+											"type": "Expression"
+										},
+										"ds_folder": {
+											"value": "@item().Source_directory",
+											"type": "Expression"
+										},
+										"ds_filename": {
+											"value": "@item().File_name",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "parameterdataset11",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"ds_container": {
+											"value": "@item().Target_container",
+											"type": "Expression"
+										},
+										"ds_folder": {
+											"value": "@item().Target_directory",
+											"type": "Expression"
+										},
+										"ds_filename": {
+											"value": "@item().File_name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
