@@ -37,8 +37,6 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Get Metadata1",
@@ -82,14 +80,9 @@
 									}
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
+									"type": "BinarySink",
 									"storeSettings": {
 										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
 									}
 								},
 								"enableStaging": false
@@ -109,7 +102,13 @@
 							"outputs": [
 								{
 									"referenceName": "ds_Sink_UnzippedCSV1",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"SinkFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}

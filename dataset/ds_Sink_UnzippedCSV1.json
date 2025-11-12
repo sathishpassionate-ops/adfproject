@@ -1,0 +1,27 @@
+{
+	"name": "ds_Sink_UnzippedCSV1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SinkFileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().SinkFileName",
+					"type": "Expression"
+				},
+				"folderPath": "input",
+				"fileSystem": "adfproject"
+			}
+		}
+	}
+}
