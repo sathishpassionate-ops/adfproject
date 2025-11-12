@@ -50,13 +50,22 @@
 				"inputs": [
 					{
 						"referenceName": "landingdataset",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_filename": "dummy"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "destionationdataset",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_filename": {
+								"value": "@pipeline().parameters.ds_filename",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -94,6 +103,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"ds_filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
