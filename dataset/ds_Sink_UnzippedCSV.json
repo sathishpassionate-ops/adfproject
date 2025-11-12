@@ -1,0 +1,37 @@
+{
+	"name": "ds_Sink_UnzippedCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"SinkFileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().SinkFileName",
+					"type": "Expression"
+				},
+				"folderPath": "input",
+				"fileSystem": "adfproject"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "\u0000\u0005\u0016\u0007\u0000\u0002\u0000\u0000Mac OS X        \u0000\u0002\u0000\u0000\u0000\t\u0000\u0000\u00002\u0000\u0000\u0001v\u0000\u0000\u0000\u0002\u0000\u0000\u0001�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0010\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000ATTR\u0000\u0000\u0000\u0000\u0000\u0000\u0001�\u0000\u0000\u0001\f\u0000\u0000\u0000�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0003\u0000\u0000\u0001\f\u0000\u0000\u0000*\u0000\u0000$com.apple.metadata:_kMDItemUserTags\u0000\u0000\u0000\u0000\u00016\u0000\u0000\u0000Y\u0000\u00007com.apple.metadata:kMDLabel_l65qupp6kgkd7fndclmftnarii\u0000\u0000\u0000\u0000\u0000\u0001�\u0000\u0000\u0000\u0019\u0000\u0000\u0015com.apple.quarantine\u0000bplist00�\b\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\t���\f}�\u001c�3�%&�fN\u000b�ֽHlm����T��wS/�/�%��=��\u0014ʥ�p���M8�S%4\u0018�4MX�`�:\u0013�1\u001f\u000b�����RO�?�IqǴ{�q/0082;580b20f2;Numbers;\u0000",
+				"type": "String"
+			}
+		]
+	}
+}
