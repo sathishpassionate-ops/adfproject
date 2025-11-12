@@ -84,8 +84,7 @@
 								"sink": {
 									"type": "DelimitedTextSink",
 									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings",
-										"copyBehavior": "FlattenHierarchy"
+										"type": "AzureBlobFSWriteSettings"
 									},
 									"formatSettings": {
 										"type": "DelimitedTextWriteSettings",
@@ -109,14 +108,8 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_Sink_UnzippedCSV",
-									"type": "DatasetReference",
-									"parameters": {
-										"SinkFileName": {
-											"value": "@replace(item().name, '.zip', '.csv')",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "ds_Sink_UnzippedCSV1",
+									"type": "DatasetReference"
 								}
 							]
 						}
