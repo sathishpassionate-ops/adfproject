@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "copy to bronze",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -71,7 +71,7 @@
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "copy to bronze",
 						"dependencyConditions": [
 							"Succeeded"
 						]
