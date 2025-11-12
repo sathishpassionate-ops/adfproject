@@ -92,7 +92,7 @@
 					"notebookPath": "/Users/sathishdevilliers97@gmail.com/project/csv to table loader",
 					"baseParameters": {
 						"file_path": {
-							"value": "@pipeline().parameters.file_name",
+							"value": "@pipeline().parameters.ds_filename",
 							"type": "Expression"
 						}
 					}
