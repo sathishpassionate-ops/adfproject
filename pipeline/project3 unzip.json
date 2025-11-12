@@ -17,7 +17,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_Source_ZippedBinary",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"SourceFileName": {
+								"value": "@pipeline().parameters.pp_filename",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems"
@@ -121,6 +127,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"pp_filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
