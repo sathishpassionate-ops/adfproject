@@ -19,10 +19,7 @@
 						"referenceName": "ds_Source_ZippedBinary",
 						"type": "DatasetReference",
 						"parameters": {
-							"SourceFileName": {
-								"value": "@pipeline().parameters.pp_filename",
-								"type": "Expression"
-							}
+							"SourceFileName": "*.zip"
 						}
 					},
 					"fieldList": [
