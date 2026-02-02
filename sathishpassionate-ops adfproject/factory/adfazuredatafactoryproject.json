@@ -1,0 +1,9 @@
+{
+	"name": "adfazuredatafactoryproject",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "99df1c1e-4462-4e25-b2ab-e78069f6c401",
+		"tenantId": "81316d99-43eb-4471-8d94-9c18f9b0c2c6"
+	}
+}
