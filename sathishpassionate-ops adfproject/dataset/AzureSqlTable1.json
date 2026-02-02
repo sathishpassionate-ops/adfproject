@@ -1,0 +1,43 @@
+{
+	"name": "AzureSqlTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_Metadata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "file_name",
+				"type": "varchar"
+			},
+			{
+				"name": "source_system",
+				"type": "varchar"
+			},
+			{
+				"name": "file_path",
+				"type": "varchar"
+			},
+			{
+				"name": "is_processed",
+				"type": "char"
+			},
+			{
+				"name": "processed_date",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "status",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "file_audit_metadata"
+		}
+	}
+}
