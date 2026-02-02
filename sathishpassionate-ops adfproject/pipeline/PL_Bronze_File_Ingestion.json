@@ -117,13 +117,25 @@
 										"inputs": [
 											{
 												"referenceName": "DS_Source_Files",
-												"type": "DatasetReference"
+												"type": "DatasetReference",
+												"parameters": {
+													"file_name": {
+														"value": "@item().name\n",
+														"type": "Expression"
+													}
+												}
 											}
 										],
 										"outputs": [
 											{
 												"referenceName": "DS_Bronze_Files",
-												"type": "DatasetReference"
+												"type": "DatasetReference",
+												"parameters": {
+													"file_name": {
+														"value": "@item().name\n",
+														"type": "Expression"
+													}
+												}
 											}
 										]
 									}
