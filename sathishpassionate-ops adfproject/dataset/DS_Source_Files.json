@@ -13,7 +13,9 @@
 				"fileName": {
 					"value": "'@item().name'\n",
 					"type": "Expression"
-				}
+				},
+				"folderPath": "sales",
+				"fileSystem": "inbound"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
