@@ -5,9 +5,14 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -31,7 +36,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "AzureSqlSource",
-									"sqlReaderQuery": "SELECT COUNT(1) AS file_count\nFROM file_audit\nWHERE file_name = '@{item().name}'\n",
+									"sqlReaderQuery": {
+										"value": "SELECT COUNT(1) AS file_count\nFROM file_audit\nWHERE file_name = '@{item().name}'\n",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -59,7 +67,7 @@
 									"value": "@equals(\n  activity('Lookup1').output.firstRow.file_status,\n  'PROCESS'\n)",
 									"type": "Expression"
 								},
-								"ifTrueActivities": [
+								"ifFalseActivities": [
 									{
 										"name": "Copy data1",
 										"type": "Copy",
@@ -110,10 +118,7 @@
 												"referenceName": "DS_Source_Files",
 												"type": "DatasetReference",
 												"parameters": {
-													"p_file_name": {
-														"value": "@item().name",
-														"type": "Expression"
-													}
+													"p_file_name": "*.csv"
 												}
 											}
 										],
@@ -151,110 +156,22 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DS_Source_Files",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"p_file_name": "*.csv"
+						}
 					},
 					"fieldList": [
 						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
-				}
-			},
-			{
-				"name": "ForEach2",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
-						"type": "Expression"
-					},
-					"isSequential": true,
-					"activities": [
-						{
-							"name": "Copy data2",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "DelimitedTextSink",
-									"storeSettings": {
-										"type": "AzureBlobFSWriteSettings"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".txt"
-									}
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "DS_Source_Files",
-									"type": "DatasetReference",
-									"parameters": {
-										"p_file_name": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "DS_Bronze_Files",
-									"type": "DatasetReference",
-									"parameters": {
-										"p_file_name": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
-								}
-							]
-						}
-					]
 				}
 			}
 		],
